@@ -7,7 +7,7 @@ import { SaleProvider } from './sale/sale.service';
 import { SaleModule } from './sale/sale.module';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb+srv://VictorPromise:pvictor1844@cluster0.2ckcmwb.mongodb.net/'), SaleModule],
+  imports: [MongooseModule.forRoot(process.env.PORT), SaleModule],
   controllers: [AppController, SaleController],
   providers: [AppService, SaleProvider],
 })
