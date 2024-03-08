@@ -10,7 +10,7 @@ export class Sale {
     name: string;
 
     @Prop()
-    Brand: any;
+    Brand: string;
 
     @Prop()
     color: string;

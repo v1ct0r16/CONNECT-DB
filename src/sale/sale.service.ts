@@ -28,6 +28,29 @@ async getSaleById(id: string) {
     }
 }
 
+async getAllSale(): Promise<Sale[]> {
+    try {
+        const findAll = await this.saleModel.find().exec();
+        return findAll;
+    } catch (error) {
+        throw new NotFoundException('Failed to Retrieve Item')
+    }
+}
+
+async updateSale(id: string, payload) {
+    try {
+        const updateSale = await this.saleModel.findById(id).exec();
+
+        if (!updateSale) {
+            throw new NotFoundException(`Item with ID ${id} not found`);
+        }
+
+        Object.assign(updateSale, payload);
+
+        await updateSale.save();
+    }
+}
+
 }
 
 export class SaleProvider {}
