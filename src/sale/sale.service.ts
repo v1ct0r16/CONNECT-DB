@@ -24,7 +24,8 @@ export class SaleService {
 
       return find;
     } catch (error) {
-      throw new NotFoundException(`Item with ID ${id} not found`);
+      // throw new NotFoundException(`Item with ID ${id} not found`);
+      return error 
     }
   }
 
@@ -48,10 +49,13 @@ export class SaleService {
       Object.assign(updateSale, payload);
 
       await updateSale.save();
+      return updateSale;
     } catch (error) {
       throw new NotFoundException(`Failed to Update Item with ID ${id}`);
     }
   }
+
+  async  delete
 }
 
 export class SaleProvider {}

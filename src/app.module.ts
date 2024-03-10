@@ -5,9 +5,10 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { SaleController } from './sale/sale.controller';
 import { SaleProvider } from './sale/sale.service';
 import { SaleModule } from './sale/sale.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [MongooseModule.forRoot(process.env.PORT), SaleModule],
+  imports: [ ConfigModule.forRoot({isGlobal: true}),MongooseModule.forRoot(process.env.PORT),SaleModule],
   controllers: [AppController, SaleController],
   providers: [AppService, SaleProvider],
 })
