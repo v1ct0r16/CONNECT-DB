@@ -55,7 +55,18 @@ export class SaleService {
     }
   }
 
-  async  delete
+  async  deleteSale(id: string){
+    try {
+      const deleteIt = await this.saleModel.findByIdAndDelete(id).exec();
+      if(!deleteIt) {
+        throw new NotFoundException(`Sale with ID ${id} not found`);
+      }
+      return deleteIt
+
+    }catch (error) {
+      throw new NotFoundException(`Item not found`);
+    }
+  }
 }
 
 export class SaleProvider {}
