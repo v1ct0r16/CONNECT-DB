@@ -3,14 +3,16 @@ import { Sale } from './schema/sale.schema';
 import { SaleService } from './sale.service';
 
 @Controller('sale')
-export class SaleController {
+export class SaleController{
+  constructor(private readonly SaleService: SaleService){} 
+  
   @Get()
   async getAllSale(): Promise<Sale[]> {
-    return await this.saleService.getAllSale();
+    return await this.SaleService.getAllSale();
   }
 
   @Put(':id')
-  async updateSale(@Param('id') id: string, @Body() updateSale: (sale: Sale) => Sale) {
-    return await this.saleService.updateSale(id, updateSale);
+  async updateSale(@Param('id') id: string, @Body() updateSale:){
+    return await this.SaleService.updateSale(id, updateSale);
   }
 }
