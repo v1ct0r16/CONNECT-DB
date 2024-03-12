@@ -12,7 +12,7 @@ export class SaleController{
   }
 
   @Put(':id')
-  async updateSale(@Param('id') id: string, @Body() updateSale:){
+  async updateSale(@Param('id') id: string, @Body() updateSale){
     return await this.SaleService.updateSale(id, updateSale);
   }
 }
